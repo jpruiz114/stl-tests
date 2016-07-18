@@ -130,6 +130,20 @@
 	<body>
 		<div id="wrapper">
 			<div id="container">
+				<div>
+					<input onclick="thingiView.setCameraView('top');" type="button" value="Top" />
+					<input onclick="thingiView.setCameraView('side');" type="button" value="Side" />
+					<input onclick="thingiView.setCameraView('bottom');" type="button" value="Bottom" />
+					<input onclick="thingiView.setCameraView('diagonal');" type="button" value="Diagonal" />
+					<input onclick="thingiView.setCameraZoom(5);" type="button" value="Zoom +" />
+					<input onclick="thingiView.setCameraZoom(-5);" type="button" value="Zoom -" />
+
+					Rotation: <input onclick="thingiView.setRotation(true);" type="button" value="on" /> | <input onclick="thingiView.setRotation(false);" type="button" value="off" />
+
+					<input onclick="thingiView.setObjectMaterial('wireframe');" type="button" value="Wireframe" />
+					<input onclick="thingiView.setObjectMaterial('solid');" type="button" value="Solid" />
+				</div>
+
 				<div class="section group">
 					<div class="col span_1_of_2">
 						<div id="viewer"></div>
