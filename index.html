@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<title>STL tests</title>
+
+		<meta charset="utf-8">
+
+		<script type="text/javascript" src="./js/jquery/jquery-2.1.4.min.js">
+		</script>
+
+		<script type="text/javascript" src="./js/Three.js">
+		</script>
+
+		<script type="text/javascript" src="./js/plane.js">
+		</script>
+
+		<script type="text/javascript" src="./js/thingiView.js">
+		</script>
+
+      	<script>
+			$(window).load(
+				function() {
+					thingiurlbase = "./js";
+
+					thingiView = new Thingiview("viewer");
+					thingiView.setObjectColor('#C0D8F0');
+					thingiView.initScene();
+					// thingiView.setShowPlane(true);
+
+					$.ajax({
+						url: "./models/Lego_Track_Curved_w_support.stl",
+						async: false,
+						success: function (data) {
+							$("#stl-string").val(data);
+
+							thingiView.loadSTLString(data);
+						}
+					});
+				}
+			);
+		</script>
+	</head>
+
+	<body>
+		<div id="sidebar" style="float:right; width:40%">
+			<form>
+				<textarea id="stl-string" style="height:500px; width:100%"></textarea>
+
+				<input type="button" value="Load" onclick="thingiView.loadSTLString(document.getElementById('stlstring').value);">
+			</form>
+		</div>
+
+		<p>
+			<input onclick="thingiView.setCameraView('top');" type="button" value="Top" />
+			<input onclick="thingiView.setCameraView('side');" type="button" value="Side" />
+			<input onclick="thingiView.setCameraView('bottom');" type="button" value="Bottom" />
+			<input onclick="thingiView.setCameraView('diagonal');" type="button" value="Diagonal" />
+			<input onclick="thingiView.setCameraZoom(5);" type="button" value="Zoom +" />
+			<input onclick="thingiView.setCameraZoom(-5);" type="button" value="Zoom -" />
+			Rotation: <input onclick="thingiView.setRotation(true);" type="button" value="on" /> | <input onclick="thingiView.setRotation(false);" type="button" value="off" />
+		</p>
+
+        <div id="viewer" style="width:50%; height:400px"></div>
+
+        <p>
+			<input onclick="thingiView.setObjectMaterial('wireframe');" type="button" value="Wireframe" />
+			<input onclick="thingiView.setObjectMaterial('solid');" type="button" value="Solid" />
+		</p>
+
+        <p>
+			Plane: <a href="#" onclick="thingiView.setShowPlane(false)">Hide</a> | <a href="#" onclick="thingiView.setShowPlane(true)">Show</a><br/>
+			Background Color: <a href="#" onclick="thingiView.setBackgroundColor('#606060')">Gray</a> | <a href="#" onclick="thingiView.setBackgroundColor('#ffffff')">White</a> | <a href="#" onclick="thingiView.setBackgroundColor('#000000')">Black</a><br/>
+			Object Color: <a href="#" onclick="thingiView.setObjectColor('#ffffff')">White</a> | <a href="#" onclick="thingiView.setObjectColor('#aa0000')">Red</a> | <a href="#" onclick="thingiView.setObjectColor('#CDFECD')">Green</a> | <a href="#" onclick="thingiView.setObjectColor('#C0D8F0')">Blue</a><br/>
+		</p>
+	</body>
+</html>
