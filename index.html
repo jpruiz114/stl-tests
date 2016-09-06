@@ -2,37 +2,37 @@
 <html lang="en" class="no-js">
 	<head>
 		<title>STL tests</title>
-
+		
 		<meta charset="utf-8">
-
+		
 		<script type="text/javascript" src="./js/jquery/jquery-2.1.4.min.js">
 		</script>
-
+		
 		<script type="text/javascript" src="./js/Three.js">
 		</script>
-
+		
 		<script type="text/javascript" src="./js/plane.js">
 		</script>
-
+		
 		<script type="text/javascript" src="./js/thingiview.js">
 		</script>
-
-      	<script>
+		
+		<script>
 			$(window).load(
 				function() {
 					thingiurlbase = "./js";
-
+					
 					thingiView = new Thingiview("viewer");
 					thingiView.setObjectColor('#C0D8F0');
 					thingiView.initScene();
 					//thingiView.setShowPlane(false);
-
+					
 					$.ajax({
 						url: "./models/Lego_Track_Curved_w_support.stl",
 						async: false,
 						success: function (data) {
 							$("#stl-string").val(data);
-
+							
 							thingiView.loadSTLString(data);
 						}
 					});
